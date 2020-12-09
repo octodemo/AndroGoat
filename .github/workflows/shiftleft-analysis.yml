@@ -24,13 +24,13 @@ jobs:
         chmod +x gradlew
         ./gradlew assembleDebug
     - name: Perform ShiftLeft Scan
-      uses: ShiftLeftSecurity/scan-action@master
+      uses: ShiftLeftSecurity/scan-action@0cb7a024358752e39b3bea6568d75ec7194aefa1
       env:
         WORKSPACE: ""
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         output: reports
-        type: credscan,kotlin,java
+        type: credscan,kotlin
     - uses: actions/upload-artifact@v1
       with:
         name: reports
