@@ -24,7 +24,7 @@ jobs:
         chmod +x gradlew
         ./gradlew assembleDebug
     - name: Perform ShiftLeft Scan
-      uses: ShiftLeftSecurity/scan-action@0cb7a024358752e39b3bea6568d75ec7194aefa1
+      uses: ShiftLeftSecurity/scan-action@master
       env:
         WORKSPACE: ""
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
