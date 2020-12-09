@@ -28,9 +28,10 @@ jobs:
       env:
         WORKSPACE: ""
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SCAN_AUTO_BUILD: true
+        SCAN_DEBUG_MODE: true
       with:
         output: reports
-        type: credscan,kotlin
     - uses: actions/upload-artifact@v1
       with:
         name: reports
