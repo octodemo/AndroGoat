@@ -33,12 +33,8 @@ jobs:
         # type: credscan,java
         # type: python
     - name: Set permissions
-      run: |
-        ls -l
-        ls -l reports
-        cp -r reports reports2
-        ls -l
-        ls -l reports2
+      run: cp -r reports reports2
+
     - uses: actions/github-script@v3
       with:
         script: |
@@ -48,7 +44,7 @@ jobs:
           const report = JSON.parse(rawdata);
           report.runs[0].tool.driver.rules = report.runs[0].tool.driver.rules.map((rule) => ({
             ...rule,
-            shortDescription: { text: `aaa${rule.fullDescription.text}` }
+            shortDescription: { text: rule.fullDescription.text }
           }))
           let data = JSON.stringify(report);
           fs.writeFileSync(filename, data);
