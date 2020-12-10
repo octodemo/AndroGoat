@@ -33,7 +33,10 @@ jobs:
         # type: credscan,java
         # type: python
     - name: Set permissions
-      run: chmod -R 755 reports/* 
+      run: |
+        ls -l
+        ls -l reports
+        sudo chmod -R 755 reports/* 
     - uses: actions/github-script@v3
       with:
         script: |
