@@ -32,6 +32,8 @@ jobs:
         # Scan auto-detects the languages in your project. To override uncomment the below variable and set the type
         # type: credscan,java
         # type: python
+    - name: Set permissions
+      run: chmod -R 755 reports/* 
     - uses: actions/github-script@v3
       with:
         script: |
