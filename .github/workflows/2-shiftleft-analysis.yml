@@ -48,7 +48,7 @@ jobs:
           const report = JSON.parse(rawdata);
           report.runs[0].tool.driver.rules = report.runs[0].tool.driver.rules.map((rule) => ({
             ...rule,
-            shortDescription: `aaa${rule.fullDescription.text}`
+            shortDescription: { text: `aaa${rule.fullDescription.text}` }
           }))
           let data = JSON.stringify(report);
           fs.writeFileSync(filename, data);
