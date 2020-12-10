@@ -9,7 +9,7 @@ on: push
 jobs:
   Scan-Build:
     # Scan runs on ubuntu, mac and windows
-    runs-on: svanboxel-dec-test
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     # Instructions
