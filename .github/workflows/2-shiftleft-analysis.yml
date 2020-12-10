@@ -32,7 +32,19 @@ jobs:
         # Scan auto-detects the languages in your project. To override uncomment the below variable and set the type
         # type: credscan,java
         # type: python
-
+    - uses: actions/github-script@v3
+      with:
+        script: |
+          const fs = require("fs")
+          const filename = reports/audit-kt-report.sarif
+          const rawdata = fs.readFileSync(filename);
+          const report = JSON.parse(rawdata);
+          report.runs[0].tool.driver.rules = report.runs[0].tool.driver.rulesmap((rule) => ({
+            ...rule,
+            shortDescription: `aaa${rule.fullDescription.text}`
+          }))
+          let data = JSON.stringify(report);
+          fs.writeFileSync(filename, data);
     - name: Upload report
       uses: github/codeql-action/upload-sarif@v1
       with:
